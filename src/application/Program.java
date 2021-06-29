@@ -26,8 +26,15 @@ public class Program {
 			while(rs.next()) {
 				System.out.println(rs.getInt("Id") + ", " + rs.getString("Name"));
 			}
+			
+			
 		}catch (SQLException e) {
 			throw new DbException(e.getMessage());
+		}
+		finally {
+			DB.closeStatement(st);
+			DB.closeResultSet(rs);
+			DB.closeConnection();
 		}
 
 	}
